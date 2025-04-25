@@ -10,7 +10,7 @@ This is the origin Pytorch implementation of HST in the following paper:
 ## Model Architecture
 
 <p align="center">
-<img src="./img/HST.jpg" height = "300" width = "700" alt="" align=center />
+<img src="./img/HST.jpg" height = "800" width = "1400" alt="" align=center />
 <br><br>
 <b>Figure 1.</b> An overview of a three-stage HST model. A multivariate time series composed of three sequences, which are marked with red, green and blue,
 is used as an example input. The stages are bridged by downsampling operations and the outputs of all stages are utilized for prediction. The top of the
