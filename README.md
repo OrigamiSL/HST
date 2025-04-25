@@ -10,7 +10,7 @@ This is the origin Pytorch implementation of HST in the following paper:
 ## Model Architecture
 
 <p align="center">
-<img src="./img/HST.jpg" height = "500" width = "1600" alt="" align=center />
+<img src="./img/HST.jpg" height = "400" width = "1600" alt="" align=center />
 <br><br>
 <b>Figure 1.</b> An overview of a three-stage HST model. A multivariate time series composed of three sequences, which are marked with red, green and blue,
 is used as an example input. The stages are bridged by downsampling operations and the outputs of all stages are utilized for prediction. The top of the
@@ -88,17 +88,15 @@ Here we provide a more detailed and complete command description for training an
 |  checkpoints   |                                       Location of model checkpoints                                        |
 |   input_len    |                                           Input sequence length                                            |
 |    pred_len    |                                         Prediction sequence length                                         |
-|     enc_in     |                                                 Input size                                                 |
-|    dec_out     |                                                Output size                                                 |
-|    d_model     |                                             Dimension of model                                             |
+|    period    |                                         Vested periods for global timestamps                                         |
+|     enc_in     |                                                 Input variable number                                                |
+|    dec_out     |                                                Output variable number                                             |
+|    d_model     |                                             Hidden dims of model                                             |
 |  encoder_layer |                                            The number of stages                                            |
 |   layer_stack  |                                       The number of layers per stage                                       |
 |   patch_size   |                                The initial patch size in patch-wise attention                              |
 |  MODWT_level   |                                           The level of MODWT/MRA                                           |
-|augmentation_method   |                                           Augmentation method                                           |
-|  augmentation_ratio   |                                           Augmentation ratio                                           |
-|  augmentation_len   |                                           Augmentation length                                           |
-|  decoder_IN   |                                          Whether to perform IN for decoder inputh                                           |
+|  ccc_num  |                                           Number of correlated variables                                           |
 |    dropout     |                                                  Dropout                                                   |
 |    num_workers     |                                                  Data loader num workers                                                   |
 |      itr       |                                             Experiments times                                              |
@@ -113,7 +111,7 @@ Here we provide a more detailed and complete command description for training an
 The experiment parameters of each dataset are formated in the `Main.sh` files in the directory `./scripts/`. You can refer to these parameters for experiments, and you can also adjust the parameters to obtain better mse and mae results or draw better prediction figures. We present the multivariate forecasting results of the four datasets in Figure 2.
 
 <p align="center">
-<img src="./img/HST_results.jpg" height = "500" alt="" align=center />
+<img src="./img/HST_results.jpg" height = "350" alt="" align=center />
 <br><br>
 <b>Figure 2.</b> Multivariate forecasting results (Input length = 336).
 </p>
