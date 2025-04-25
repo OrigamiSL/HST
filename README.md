@@ -113,7 +113,7 @@ The experiment parameters of each dataset are formated in the `Main.sh` files in
 <p align="center">
 <img src="./img/HST_results.jpg" height = "350" alt="" align=center />
 <br><br>
-<b>Figure 2.</b> Multivariate forecasting results (Input length = 336).
+<b>Figure 2.</b> Multivariate forecasting results.
 </p>
 
 
