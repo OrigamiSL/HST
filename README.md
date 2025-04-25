@@ -1,18 +1,21 @@
-# Inconsistent Multivariate Time Series Forecasting
+# Exploring the Hierarchical Sparsity in Long-term Multivariate Energy Data for Effective and Efficient Forecasting
 ![Python 3.11](https://img.shields.io/badge/python-3.11-green.svg?style=plastic)
 ![PyTorch 2.1.0](https://img.shields.io/badge/PyTorch%20-%23EE4C2C.svg?style=plastic)
 ![CUDA 11.8](https://img.shields.io/badge/cuda-11.8-green.svg?style=plastic)
 ![License CC BY-NC-SA](https://img.shields.io/badge/license-CC_BY--NC--SA--green.svg?style=plastic)
 
-This is the origin Pytorch implementation of FPPformer-MD in the following paper: 
-[Inconsistent Multivariate Time Series Forecasting] (Manuscript submitted to IEEE Transactions on Knowledge and Data Engineering). The appendix of this paper can be found at `./appendix/FPPformer_MD_Appendix.pdf`. 
+This is the origin Pytorch implementation of HST in the following paper: 
+[Exploring the Hierarchical Sparsity in Long-term Multivariate Energy Data for Effective and Efficient Forecasting] (Manuscript submitted to IEEE Transactions on Smart Grid). The appendix of this paper can be found at `./HST_Appendix.pdf`. 
 
 ## Model Architecture
-Traditional statistical time series forecasting models rely on model identification methods to identify the worthiest model variants to investigate; therefore, the model parameters change with the statistical features of rolling windows to reach optimality. Currently, although deep-learning-based methods achieve promising multivariate forecasting performance, their representations of variable correlations are consistent regardless of the observed local time series properties and dynamic cross-variable relations, rendering them prone to overfitting. To bridge this gap, we propose FPPformer-MD, a novel inconsistent time series forecasting transformer. FPPformer-MD leverages multiresolution analysis to transform each univariate series into multiple frequency scales and evaluate the local variable correlations via their variances. Thus, FPPformer-MD receives richer input features, and its inner inconsistent cross-variable attention mechanism enables the adaptive extraction of cross-variable features. To further alleviate the overfitting problem, we apply dynamic mode decomposition to perform cross-variable data augmentation, which reconstructs the sequence outliers with other correlated sequences during the model training process. Extensive experiments conducted on thirteen real-world benchmarks demonstrate the state-of-the-art performance of FPPformer-MD.
+
 <p align="center">
 <img src="./img/FPPformer-MD.jpg" height = "300" alt="" align=center />
 <br><br>
-<b>Figure 1.</b> The architecture of FPPformer-MD with a $N$-stage encoder and a $M$-stage decoder  ($N=M=6$ in experiment). The colored modules are the novel methods proposed in this work.
+<b>Figure 1.</b> An overview of a three-stage HST model. A multivariate time series composed of three sequences, which are marked with red, green and blue,
+is used as an example input. The stages are bridged by downsampling operations and the outputs of all stages are utilized for prediction. The top of the
+figure illustrates the global time stamps for hierarical intra-series sparisity, while the bottom illustrates the hierarchical identification procedure for inter-series
+sparisity..
 </p>
 
 
