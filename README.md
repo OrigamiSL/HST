@@ -37,84 +37,45 @@ pip install -r requirements.txt
 ```
 
 ## Raw Data
-ECL was acquired at: [here](https://drive.google.com/drive/folders/1ZOYpTUa82_jCcxIdTmyr0LXQfvaM9vIy?usp=sharing). Solar dataset was acquired at: [Solar](https://drive.google.com/drive/folders/1Gv1MXjLo5bLGep4bsqDyaNMI2oQC9GH2?usp=sharing). Wind was acquired at: [Wind]( https://www.kaggle.com/datasets/sohier/30-years-of-european-wind-generation). Hydro was acquired at: [Hydro](https://www.kaggle.com/datasets/mahbuburrahman2020/europe-green-electricity-generation-consumption).
+ECL was acquired at: [here](https://drive.google.com/drive/folders/1ZOYpTUa82_jCcxIdTmyr0LXQfvaM9vIy?usp=sharing). Solar dataset was acquired at: [Solar](https://drive.google.com/drive/folders/12ffxwxVAGM_MQiYpIk9aBLQrb2xQupT-). Wind was acquired at: [Wind]( https://www.kaggle.com/datasets/sohier/30-years-of-european-wind-generation). Hydro was acquired at: [Hydro](https://www.kaggle.com/datasets/mahbuburrahman2020/europe-green-electricity-generation-consumption).
 
 ### Data Preparation
-After you acquire raw data of all datasets, please separately place them in corresponding folders at `./data`. 
+We supply all processed datasets and put them under `./data`, the folder tree is shown below:
+```
+|-data
+| |-ECL
+| | |-ECL.csv
+| |
+| |-Hydro_BXX
+| | |-Hydro_BXX.csv
+| |
+| |-Solar
+| | |-solar_AL.csv
+| |
+| |-Wind
+| | |-Wind.csv
+| |
+| ...
+```
 
-We place ECL in the folder `./electricity` of [here](https://drive.google.com/drive/folders/1ZOYpTUa82_jCcxIdTmyr0LXQfvaM9vIy?usp=sharing) (the folder tree in the link is shown as below) into folder `./data` and rename it from `./electricity` to `./ECL`. We rename the file of ECL from `electricity.csv` to `ECL.csv` and rename its last variable from `OT` to original `MT_321`.
+The processing details for the four datasets are as follows. We place ECL in the folder `./electricity` of [here](https://drive.google.com/drive/folders/1ZOYpTUa82_jCcxIdTmyr0LXQfvaM9vIy?usp=sharing) (the folder tree in the link is shown as below) into folder `./data` and rename it from `./electricity` to `./ECL`. We rename the file of ECL from `electricity.csv` to `ECL.csv` and rename its last variable from `OT` to original `MT_321`. The processed file can be found at `./data/ECL/ECL.csv`
 ```
 The folder tree in https://drive.google.com/drive/folders/1ZOYpTUa82_jCcxIdTmyr0LXQfvaM9vIy?usp=sharing:
 |-autoformer
 | |-electricity
 | | |-electricity.csv
 ```
-
-To standardize the data format, we convert the data file of [Solar](https://drive.google.com/drive/folders/1Gv1MXjLo5bLGep4bsqDyaNMI2oQC9GH2?usp=sharing) from 'solar_AL.txt' to 'solar_AL.csv'. Then we compress this file and upload it to the folder `./data/Solar`, where you can get the data file by simply unzipping the 'solar_AL.zip' file.
-
-We place the NPZ files ('PEMS03.npz', 'PEMS04.npz', 'PEMS07.npz', 'PEMS08.npz') of PeMSD3, PeMSD4, PeMSD7 and PeMSD8 in the folder `./PEMS03`, `./PEMS03`, `./PEMS03` and `./PEMS03` of [PeMS](https://github.com/guoshnBJTU/ASTGNN/tree/main/data) 
- into the folder `./data/PEMS`. We place the H5 file ('pems-bay.h5') of PeMS-Bay in the [PeMS-Bay](https://drive.google.com/drive/folders/10FOTa6HXPqX8Pf5WRoRwcFnW9BrNZEIX) into the folder `./data/PEMS`. The folder trees in the mentioned two links are shown as below:
-
-```
-The folder tree in https://github.com/guoshnBJTU/ASTGNN/tree/main/data:
-|-PEMS03
-| |-PEMS03.csv
-| |-PEMS03.npz
-| |-PEMS03.txt
-|-PEMS04
-| |-PEMS04.csv
-| |-PEMS04.npz
-|-PEMS07
-| |-PEMS07.csv
-| |-PEMS07.npz
-|-PEMS08
-| |-PEMS08.csv
-| |-PEMS08.npz
-
-The folder tree in https://drive.google.com/drive/folders/10FOTa6HXPqX8Pf5WRoRwcFnW9BrNZEIX:
-|-metr-la.h5
-|-pems-bay.h5
-```
-
-After you process all the datasets, you will obtain folder tree:
-```
-|-data
-| |-ECL
-| | |-ECL.csv
-| |
-| |-ETT
-| | |-ETTh1.csv
-| | |-ETTh2.csv
-| | |-ETTm1.csv
-| | |-ETTm2.csv
-| |
-| |-PEMS
-| | |-PEMS03.npz
-| | |-PEMS04.npz
-| | |-PEMS07.npz
-| | |-PEMS08.npz
-| | |-pems-bay.h5
-| |
-| |-Solar
-| | |-solar_AL.csv
-| |
-| |-Traffic
-| | |-Traffic.csv
-| |
-| |-weather
-| | |-weather.csv
-
-```
+To standardize the data format, we convert the data file of [Solar](https://drive.google.com/drive/folders/12ffxwxVAGM_MQiYpIk9aBLQrb2xQupT-) from 'solar_AL.txt' to 'solar_AL.csv'. We place the processed file into the folder `./data/Solar`. For convenience, we processed the Wind and Hydro datasets and you can obtain the processed files at `./data/Wind/Wind.csv` and `./data/Hydro_BXX/Hydro_BXX.csv`, respectively.
 
 ## Usage
-Commands for training and testing FPPformer-MD of all datasets are in `./scripts/Main.sh`. 
+Commands for training and testing HST of all datasets are in `./scripts/Main.sh`. 
 
 More parameter information please refer to `main.py`.
 
-We provide a complete command for training and testing FPPformer-MD:
+We provide a complete command for training and testing HST:
 
 ```
-python -u main.py --data <data> --input_len <input_len> --pred_len <pred_len> --encoder_layer <encoder_layer> --layer_stack <layer_stack> --MODWT_level<MODWT_level> --patch_size<patch_size> --d_model <d_model> --augmentation_len<augmentation_len> --augmentation_ratio<augmentation_ratio>  --learning_rate <learning_rate> --dropout <dropout> --batch_size <batch_size> --train_epochs <train_epochs> --itr <itr> --train --decoder_IN --patience <patience> --decay<decay>
+python -u main.py --data <data> --input_len <input_len> --pred_len <pred_len> --period <period> --encoder_layer <encoder_layer> --layer_stack <layer_stack> --MODWT_level<MODWT_level> --patch_size<patch_size> --ccc_number <ccc_number> --d_model <d_model> --learning_rate <learning_rate> --dropout <dropout> --batch_size <batch_size> --train_epochs <train_epochs> --itr <itr> --train --patience <patience> --decay<decay>
 ```
 
 Here we provide a more detailed and complete command description for training and testing the model:
@@ -149,25 +110,14 @@ Here we provide a more detailed and complete command description for training an
 
 
 ## Results
-The experiment parameters of each data set are formated in the `Main.sh` files in the directory `./scripts/`. You can refer to these parameters for experiments, and you can also adjust the parameters to obtain better mse and mae results or draw better prediction figures. We also provide the commands for obtain the results of FPPformer-MD with longer input sequence length (336) in the file `./scripts/Main.sh`. We present the full results of multivariate forecasting results in Figure 2 and Figure 3. Moreover, we compare FPPformer-MD with other outperforming baselines equipped with individual settings in Figure 4.
+The experiment parameters of each dataset are formated in the `Main.sh` files in the directory `./scripts/`. You can refer to these parameters for experiments, and you can also adjust the parameters to obtain better mse and mae results or draw better prediction figures. We present the multivariate forecasting results of the four datasets in Figure 2.
 
 <p align="center">
-<img src="./img/result1.jpg" height = "500" alt="" align=center />
+<img src="./img/HST_results.jpg" height = "500" alt="" align=center />
 <br><br>
-<b>Figure 2.</b> Multivariate forecasting results (Input length = 96). ETTh denotes the average of ETTh1 and ETTh2. ETTm denotes the average of ETTm1 and ETTm2. PeMS denotes the average of {PeMSD3, PeMSD4, PeMSD7, PeMSD8}.
+<b>Figure 2.</b> Multivariate forecasting results (Input length = 336).
 </p>
 
-<p align="center">
-<img src="./img/result2.jpg" height = "500" alt="" align=center />
-<br><br>
-<b>Figure 3.</b> Full multivariate forecasting results (Input length = 96)
-</p>
-
-<p align="center">
-<img src="./img/result3.jpg" height = "150" alt="" align=center />
-<br><br>
-<b>Figure 4.</b> Multivariate forecasting results (Individual settings)
-</p>
 
 
 ## Contact
