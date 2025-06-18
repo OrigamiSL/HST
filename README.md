@@ -5,7 +5,7 @@
 ![License CC BY-NC-SA](https://img.shields.io/badge/license-CC_BY--NC--SA--green.svg?style=plastic)
 
 This is the origin Pytorch implementation of HST in the following paper: 
-[Exploring the Hierarchical Sparsity in Long-term Multivariate Energy Data for Effective and Efficient Forecasting] (Manuscript submitted to IEEE Transactions on Smart Grid). The appendix of this paper can be found at `./appendix/HST_Appendix.pdf`. 
+[Exploring the Hierarchical Sparsity in Long-term Multivariate Energy Data for Effective and Efficient Forecasting] (Manuscript submitted to IEEE Internet of Things Journal). The appendix of this paper can be found at `./appendix/HST_Appendix.pdf`. 
 
 ## Model Architecture
 
